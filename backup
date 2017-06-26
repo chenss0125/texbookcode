@@ -39,3 +39,32 @@ if os.system(zip_command) == 0:
     print 'Successful backup to', target
 else:
     print 'Backup failed'
+
+
+
+Version 1.2(文件名注释)
+bin/python
+#Filename:backup3.py
+
+import os
+import time
+
+source = '/home/chenss/a.py'  #输入目录及其文件
+target_dir = '/home/chenss/backup/' #准备一个存放拷贝文件的目标目录 
+today = target_dir +  time.strftime('%Y%m%d')
+now = time.strftime('%H%M%S')
+if not os.path.exists(today):
+    os.mkdir(today)
+    print 'Successfully created directory', today #创建日期目录
+
+comment = raw_input('Enter a comment-->')
+if len(comment) == 0:
+    target = today + os.sep + now
+else:
+    target = today +os.sep + now + '_' + comment.replace(' ','_')
+
+zip_command = "zip -qr '%s' %s" %(target,source)
+if os.system(zip_command) == 0:
+    print 'Successful backup to', target
+else:
+    print 'Backup failed'
