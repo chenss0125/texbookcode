@@ -33,7 +33,7 @@ now = time.strftime('%H%M%S')
 if not os.path.exists(today):
     os.mkdir(today)
     print 'Successfully created directory', today #创建日期目录
-target = today + os.sep + now + '.zip' #为文件命名
+target = today + os.sep + now + '.zip' #为文件命名 #os.sep根据系统给出目录分隔符
 zip_command = "zip -qr '%s' %s" %(target,source)
 if os.system(zip_command) == 0:
     print 'Successful backup to', target
